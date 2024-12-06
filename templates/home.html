@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NBA Player Stats</title>
+</head>
+<body>
+    <h1>NBA Player Stats</h1>
+
+    <!-- Form to submit a player's name -->
+    <form method="POST">
+        <label for="player_name">Enter Player's Name:</label>
+        <input type="text" id="player_name" name="player_name" required>
+        <button type="submit">Submit</button>
+    </form>
+
+    <!-- Display player stats if a name is submitted -->
+    {% if question %}
+        {% if stats %}
+            <h2>Stats for {{ question }}</h2>
+            <ul>
+                <li><strong>Points Per Game (PPG):</strong> {{ stats[0] }}</li>
+                <li><strong>Rebounds Per Game (RPG):</strong> {{ stats[1] }}</li>
+                <li><strong>Assists Per Game (APG):</strong> {{ stats[2] }}</li>
+            </ul>
+        {% else %}
+            <p>Player "{{ question }}" not found in the dataset.</p>
+        {% endif %}
+    {% else %}
+        <p>Enter a player's name above to get stats.</p>
+    {% endif %}
+</body>
+</html>
